@@ -1,9 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
 
 
-class Board extends React.Component {
+function Square(props) {
+  return (
+    <button className='square' onClick={props.onClick}>
+      {props.value}
+    </button>
+  )
+}
+
+class Board extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -56,12 +63,20 @@ class Board extends React.Component {
   }
 }
 
-function Square(props) {
-  return (
-    <button className='square' onClick={props.onClick}>
-      {props.value}
-    </button>
-  )
+class Game extends Component {
+  render() {
+    return (
+      <div className='game'>
+        <div className='game-board'>
+          <Board />
+        </div>
+        <div className='game-info'>
+          <div>{/*status*/}</div>
+          <ol>{/*status*/}</ol>
+        </div>
+      </div>
+    )
+  }
 }
 
-export default Board;
+export default Game;
